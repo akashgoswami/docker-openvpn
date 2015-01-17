@@ -31,4 +31,8 @@ fi
 
 conf="$OPENVPN/openvpn.conf"
 
+if [ ! -f "$1" ]; then
+    conf="$OPENVPN/$1"
+fi
+
 exec openvpn --config "$conf"

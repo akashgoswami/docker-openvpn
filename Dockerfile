@@ -1,9 +1,9 @@
-# Original credit: https://github.com/jpetazzo/dockvpn
+# Original credit: https://github.com/kylemanna/docker-openvpn
 
 # Leaner build then Ubunutu
 FROM debian:jessie
 
-MAINTAINER Kyle Manna <kyle@kylemanna.com>
+MAINTAINER Akash Goswami <akashgoswami@gmail.com>
 
 RUN apt-get update && \
     apt-get install -y openvpn iptables git-core && \
@@ -23,6 +23,8 @@ VOLUME ["/etc/openvpn"]
 
 # Internally uses port 1194, remap using docker
 EXPOSE 1194/udp
+# Internally uses port 1100, remap using docker
+EXPOSE 1100/udp
 
 WORKDIR /etc/openvpn
 CMD ["ovpn_run"]
