@@ -1,8 +1,8 @@
 # Copy to /etc/init/docker-openvpn.conf
-description "Docker container for OpenVPN Client and server"
+description "Docker container for OpenVPN Client"
 start on filesystem and started docker
 stop on runlevel [!2345]
 respawn
 script
-  exec docker run --volumes-from ovpn-data --rm -p 1194:1194/udp --cap-add=NET_ADMIN akashgoswami/openvpn
+  exec docker run --rm -p :51348/udp -p :51348 --priviledged=true akashgoswami/openvpn
 end script
